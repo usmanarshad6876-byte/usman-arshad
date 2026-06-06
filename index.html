@@ -17,11 +17,14 @@
   --ink:       #0d1117;
   --ink-mid:   #1e2a38;
   --ink-soft:  #334155;
-  --muted:     #64748b;
-  --teal:      #0f9d8a;
-  --teal-2:    #14b8a6;
+  --muted:     #526173;
+  --muted-dark:#a8b3c7;
+  --teal:      #08796e;
+  --teal-2:    #2dd4bf;
+  --teal-deep: #075e56;
   --teal-pale: #e6faf8;
-  --amber:     #d97706;
+  --amber:     #7c2d12;
+  --amber-pale:#ffedd5;
   --cream:     #f9f6f1;
   --white:     #ffffff;
   --rule:      #e2e8f0;
@@ -34,6 +37,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
 body { font-family: 'Outfit', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.65; }
+a:focus-visible, button:focus-visible {
+  outline: 3px solid rgba(45,212,191,.55);
+  outline-offset: 3px;
+}
 
 /* ── SCROLL ANIMATIONS ─────────────────────────── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity .55s ease, transform .55s ease; }
@@ -49,8 +56,9 @@ nav {
 }
 .nav-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: #e2e8f0; text-decoration: none; white-space: nowrap; }
 .nav-links { display: flex; gap: 1.5rem; list-style: none; margin-left: auto; }
-.nav-links a { font-size: .78rem; font-weight: 500; letter-spacing: .04em; color: #94a3b8; text-decoration: none; transition: color .2s; text-transform: uppercase; }
-.nav-links a:hover { color: var(--teal-2); }
+.nav-links a { font-size: .78rem; font-weight: 500; letter-spacing: .04em; color: var(--muted-dark); text-decoration: none; transition: color .2s; text-transform: uppercase; }
+.nav-links a:hover, .nav-links a.active { color: var(--teal-2); }
+.nav-links a.active { text-decoration: underline; text-underline-offset: .4rem; }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; margin-left: auto; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: #e2e8f0; margin: 5px 0; border-radius: 2px; transition: .2s; }
 
@@ -87,12 +95,12 @@ h1.hero-title {
   letter-spacing: -.02em;
 }
 h1.hero-title em { font-style: italic; color: var(--teal-2); }
-.hero-sub { font-size: 1rem; color: #94a3b8; max-width: 520px; line-height: 1.75; margin-bottom: 2rem; }
+.hero-sub { font-size: 1rem; color: var(--muted-dark); max-width: 520px; line-height: 1.75; margin-bottom: 2rem; }
 .hero-btns { display: flex; gap: .85rem; flex-wrap: wrap; }
 .btn { display: inline-flex; align-items: center; gap: .45rem; padding: .6rem 1.4rem; border-radius: 8px; font-size: .85rem; font-weight: 500; text-decoration: none; transition: all .2s; }
 .btn-teal { background: var(--teal); color: #fff; }
-.btn-teal:hover { background: var(--teal-2); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15,157,138,.3); }
-.btn-ghost { border: 1px solid rgba(255,255,255,.18); color: #94a3b8; }
+.btn-teal:hover { background: var(--teal-deep); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(8,121,110,.34); }
+.btn-ghost { border: 1px solid rgba(255,255,255,.2); color: var(--muted-dark); }
 .btn-ghost:hover { border-color: var(--teal-2); color: var(--teal-2); }
 .hero-right { position: relative; z-index: 1; display: flex; flex-direction: column; gap: .8rem; padding-left: 3rem; }
 .stat-card {
@@ -104,12 +112,13 @@ h1.hero-title em { font-style: italic; color: var(--teal-2); }
 .stat-card:hover { border-color: rgba(15,157,138,.3); background: rgba(15,157,138,.04); }
 .stat-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 700; color: var(--teal-2); line-height: 1; min-width: 80px; }
 .stat-info-label { font-size: .85rem; font-weight: 500; color: #e2e8f0; }
-.stat-info-sub { font-size: .75rem; color: #64748b; margin-top: .15rem; }
+.stat-info-sub { font-size: .75rem; color: var(--muted-dark); margin-top: .15rem; }
 
 /* ── SECTION SHELL ─────────────────────────────── */
-section { padding: 5.5rem 2rem; }
+section { padding: 5.5rem 2rem; border-top: 1px solid rgba(15,23,42,.04); }
+#hero, #impact, #ai-training, #contact { border-top: none; }
 .inner { max-width: 960px; margin: 0 auto; }
-.sec-label { font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin-bottom: .6rem; }
+.sec-label { font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--teal); margin-bottom: .6rem; }
 h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--ink); margin-bottom: .75rem; }
 .sec-intro { color: var(--muted); max-width: 640px; margin-bottom: 2.5rem; line-height: 1.8; font-size: .95rem; }
 .alt-bg { background: var(--section-alt); }
@@ -119,7 +128,7 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 .card { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.5rem; transition: box-shadow .2s, transform .2s, border-color .2s; }
 .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.08); transform: translateY(-2px); border-color: #c8d8e4; }
 .card-title { font-size: .95rem; font-weight: 600; color: var(--ink); margin-bottom: .3rem; line-height: 1.5; }
-.card-meta { font-size: .78rem; color: var(--teal); font-weight: 600; margin-bottom: .4rem; letter-spacing: .02em; }
+.card-meta { font-size: .78rem; color: var(--teal-deep); font-weight: 600; margin-bottom: .4rem; letter-spacing: .02em; }
 .card-body { font-size: .875rem; color: var(--ink-soft); line-height: 1.72; }
 .card-date { font-size: .75rem; color: var(--muted); margin-bottom: .6rem; }
 
@@ -140,7 +149,7 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
   font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700;
   color: var(--teal-2); line-height: 1; margin-bottom: .75rem; position: relative;
 }
-.avatar-hint { font-size: .78rem; color: #64748b; position: relative; }
+.avatar-hint { font-size: .78rem; color: var(--muted-dark); position: relative; }
 .about-quals { display: flex; flex-direction: column; gap: 1.2rem; }
 .qual-block { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.4rem; }
 .qual-block-title { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .8rem; }
@@ -151,27 +160,28 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 
 /* ── CURRENT WORK ──────────────────────────────── */
 .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-.proj-card { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.4rem; border-left: 3px solid var(--teal); transition: box-shadow .2s; }
+.proj-card { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.4rem; border-left: 3px solid var(--teal); transition: box-shadow .2s, border-color .2s; }
 .proj-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,.07); }
-.proj-tag { display: inline-block; font-size: .68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; background: var(--teal-pale); color: var(--teal); padding: .2rem .6rem; border-radius: 4px; margin-bottom: .6rem; }
+.proj-card:nth-child(even) { border-left-color: var(--amber); }
+.proj-tag { display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; background: var(--teal-pale); color: var(--teal-deep); padding: .2rem .6rem; border-radius: 4px; margin-bottom: .6rem; }
 .proj-title { font-size: .92rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; line-height: 1.45; }
-.proj-funder { font-size: .78rem; color: var(--teal); font-weight: 500; }
+.proj-funder { font-size: .78rem; color: var(--teal-deep); font-weight: 600; }
 .proj-desc { font-size: .84rem; color: var(--ink-soft); margin-top: .4rem; line-height: 1.65; }
 
 /* ── IMPACT STORY ──────────────────────────────── */
 #impact { background: var(--ink); }
 #impact .sec-title { color: #f1f5f9; }
-#impact .sec-intro { color: #94a3b8; }
+#impact .sec-intro { color: var(--muted-dark); }
 .impact-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.07); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: 2.5rem; }
 .impact-step { padding: 1.8rem 1.4rem; background: rgba(13,17,23,.6); position: relative; }
 .impact-step::after { content: '→'; position: absolute; right: -12px; top: 50%; transform: translateY(-50%); color: var(--teal-2); font-size: 1rem; z-index: 1; }
 .impact-step:last-child::after { display: none; }
 .impact-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal-2); line-height: 1; margin-bottom: .5rem; }
 .impact-label { font-size: .82rem; font-weight: 600; color: #e2e8f0; margin-bottom: .35rem; }
-.impact-sub { font-size: .75rem; color: #64748b; line-height: 1.5; }
+.impact-sub { font-size: .75rem; color: var(--muted-dark); line-height: 1.5; }
 .impact-quote { background: rgba(15,157,138,.08); border: 1px solid rgba(15,157,138,.2); border-radius: var(--radius-lg); padding: 2rem; position: relative; }
 .impact-quote-text { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: #e2e8f0; line-height: 1.7; font-style: italic; margin-bottom: .75rem; }
-.impact-quote-attr { font-size: .78rem; color: #64748b; }
+.impact-quote-attr { font-size: .78rem; color: var(--muted-dark); }
 
 /* ── EXPERIENCE ─────────────────────────────────── */
 .timeline { display: flex; flex-direction: column; }
@@ -180,7 +190,7 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 .tl-date { font-size: .78rem; color: var(--muted); padding-top: .2rem; line-height: 1.5; text-align: right; }
 .tl-body { }
 .tl-title { font-size: .97rem; font-weight: 600; color: var(--ink); }
-.tl-org { font-size: .82rem; color: var(--teal); font-weight: 600; margin: .2rem 0 .5rem; }
+.tl-org { font-size: .82rem; color: var(--teal-deep); font-weight: 600; margin: .2rem 0 .5rem; }
 .tl-desc { font-size: .855rem; color: var(--ink-soft); line-height: 1.72; }
 .tl-pills { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
 .tl-pill { font-size: .7rem; background: var(--section-alt); color: var(--muted); padding: .2rem .6rem; border-radius: 20px; border: 1px solid var(--rule); }
@@ -197,16 +207,16 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 .pub-summary { font-size: .82rem; color: var(--ink-soft); line-height: 1.7; margin-bottom: .5rem; }
 .pub-bottom { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
 .pub-journal { font-size: .76rem; color: var(--muted); font-style: italic; }
-.pub-year { font-size: .74rem; font-weight: 600; color: var(--teal); }
-.pub-badge { font-size: .68rem; background: #fef3c7; color: var(--amber); padding: .15rem .5rem; border-radius: 4px; font-weight: 600; font-style: normal; }
+.pub-year { font-size: .74rem; font-weight: 700; color: var(--teal-deep); }
+.pub-badge { font-size: .68rem; background: var(--amber-pale); color: var(--amber); padding: .15rem .5rem; border-radius: 4px; font-weight: 700; font-style: normal; }
 .pub-tags { display: flex; gap: .35rem; flex-wrap: wrap; margin-top: .5rem; }
-.pub-tag { font-size: .66rem; background: var(--teal-pale); color: var(--teal); padding: .12rem .5rem; border-radius: 4px; font-weight: 500; }
+.pub-tag { font-size: .66rem; background: var(--teal-pale); color: var(--teal-deep); padding: .12rem .5rem; border-radius: 4px; font-weight: 600; }
 
 /* ── PROTOCOLS ──────────────────────────────────── */
 .proto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
 .proto-card { background: var(--section-alt); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.2rem; }
 .proto-title { font-size: .84rem; font-weight: 500; color: var(--ink); line-height: 1.5; margin-bottom: .3rem; }
-.proto-link a { font-size: .74rem; color: var(--teal); text-decoration: none; }
+.proto-link a { font-size: .74rem; color: var(--teal-deep); text-decoration: none; font-weight: 600; }
 .proto-link a:hover { text-decoration: underline; }
 
 /* ── GRANTS ─────────────────────────────────────── */
@@ -217,18 +227,18 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 .grants-table td { padding: .75rem .8rem; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; line-height: 1.55; }
 .grants-table tr:last-child td { border-bottom: none; }
 .grants-table tr:hover td { background: rgba(15,157,138,.03); }
-.gt-funder { font-weight: 600; color: var(--teal); white-space: nowrap; font-size: .8rem; }
+.gt-funder { font-weight: 700; color: var(--teal-deep); white-space: nowrap; font-size: .8rem; }
 
 /* ── AI TRAINING ─────────────────────────────────── */
 #ai-training { background: var(--ink-mid); }
 #ai-training .sec-title { color: #f1f5f9; }
-#ai-training .sec-intro { color: #94a3b8; }
+#ai-training .sec-intro { color: var(--muted-dark); }
 .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .ai-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: 1.4rem; }
 .ai-card-day { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-2); margin-bottom: .5rem; }
 .ai-card-title { font-size: .92rem; font-weight: 600; color: #e2e8f0; margin-bottom: .75rem; }
 .ai-module-list { display: flex; flex-direction: column; gap: .35rem; }
-.ai-module { font-size: .8rem; color: #94a3b8; padding-left: 1rem; position: relative; line-height: 1.55; }
+.ai-module { font-size: .8rem; color: var(--muted-dark); padding-left: 1rem; position: relative; line-height: 1.55; }
 .ai-module::before { content: '▹'; position: absolute; left: 0; color: var(--teal-2); }
 .ai-tools { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .75rem; }
 .ai-tool { font-size: .7rem; background: rgba(15,157,138,.12); color: var(--teal-2); padding: .2rem .55rem; border-radius: 4px; font-weight: 500; }
@@ -236,7 +246,7 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 /* ── COMMUNITY ENGAGEMENT ────────────────────────── */
 .engage-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.2rem; }
 .engage-card { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.4rem; border-top: 3px solid var(--teal); }
-.engage-date { font-size: .72rem; color: var(--teal); font-weight: 600; margin-bottom: .4rem; }
+.engage-date { font-size: .72rem; color: var(--teal-deep); font-weight: 700; margin-bottom: .4rem; }
 .engage-title { font-size: .9rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; line-height: 1.4; }
 .engage-body { font-size: .82rem; color: var(--ink-soft); line-height: 1.65; }
 
@@ -246,13 +256,13 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 .policy-block h3 { font-size: .9rem; font-weight: 600; color: var(--ink); margin-bottom: .75rem; padding-bottom: .5rem; border-bottom: 1px solid var(--rule); }
 .policy-block ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
 .policy-block li { font-size: .84rem; color: var(--ink-soft); padding-left: 1.1rem; position: relative; line-height: 1.6; }
-.policy-block li::before { content: '—'; position: absolute; left: 0; color: var(--teal); }
+.policy-block li::before { content: '—'; position: absolute; left: 0; color: var(--teal-deep); }
 
 /* ── TEACHING ────────────────────────────────────── */
 .ws-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: .85rem; }
 .ws-card { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.2rem 1.3rem; }
 .ws-title { font-size: .88rem; font-weight: 600; color: var(--ink); margin-bottom: .25rem; line-height: 1.45; }
-.ws-venue { font-size: .76rem; color: var(--teal); font-weight: 500; }
+.ws-venue { font-size: .76rem; color: var(--teal-deep); font-weight: 600; }
 .ws-date { font-size: .73rem; color: var(--muted); margin-top: .15rem; }
 
 /* ── PRESENTATIONS ───────────────────────────────── */
@@ -265,19 +275,21 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 /* ── NEWSLETTERS ─────────────────────────────────── */
 .nl-intro-bar { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; margin-bottom: 2rem; }
 .nl-stat { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius-lg); padding: 1.3rem 1.4rem; text-align: center; }
-.nl-stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1; }
+.nl-stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--teal-deep); line-height: 1; }
 .nl-stat-lbl { font-size: .78rem; color: var(--muted); margin-top: .3rem; line-height: 1.4; }
 .nl-lang-row { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
-.nl-lang { font-size: .78rem; font-weight: 500; background: var(--teal-pale); color: var(--teal); padding: .25rem .75rem; border-radius: 20px; }
+.nl-lang { font-size: .78rem; font-weight: 600; background: var(--teal-pale); color: var(--teal-deep); padding: .25rem .75rem; border-radius: 20px; }
 .nl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px,1fr)); gap: .8rem; }
 .nl-card { background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius); padding: 1rem 1.2rem; transition: border-color .2s; }
 .nl-card:hover { border-color: var(--teal); }
 .nl-card a { text-decoration: none; color: inherit; }
 .nl-issue { font-size: .65rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .25rem; }
 .nl-title { font-size: .85rem; font-weight: 600; color: var(--ink); margin-bottom: .3rem; line-height: 1.4; }
-.nl-langs { font-size: .72rem; color: var(--teal); }
+.nl-langs { font-size: .72rem; color: var(--teal-deep); font-weight: 600; }
 .nl-featured { border-left: 3px solid var(--teal); }
-.nl-badge { display: inline-block; font-size: .65rem; font-weight: 700; background: #fef3c7; color: var(--amber); padding: .1rem .4rem; border-radius: 4px; margin-left: .4rem; vertical-align: middle; }
+.nl-badge { display: inline-block; font-size: .65rem; font-weight: 700; background: var(--amber-pale); color: var(--amber); padding: .1rem .4rem; border-radius: 4px; margin-left: .4rem; vertical-align: middle; }
+.nl-extra { display: none; }
+.nl-extra.open { display: contents; }
 
 /* ── RECOGNITION ─────────────────────────────────── */
 .award-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
@@ -291,16 +303,16 @@ h2.sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.9rem, 
 .profile-row { display: flex; align-items: center; justify-content: space-between; background: var(--card-bg); border: 1px solid var(--rule); border-radius: var(--radius); padding: .9rem 1.3rem; transition: border-color .2s; }
 .profile-row:hover { border-color: var(--teal); }
 .profile-name { font-size: .88rem; font-weight: 500; color: var(--ink); }
-.profile-link { font-size: .8rem; color: var(--teal); text-decoration: none; font-weight: 500; }
+.profile-link { font-size: .8rem; color: var(--teal-deep); text-decoration: none; font-weight: 600; }
 .profile-link:hover { text-decoration: underline; }
 
 /* ── CONTACT ─────────────────────────────────────── */
 #contact { background: var(--ink); }
 #contact .sec-title { color: #f1f5f9; }
-#contact .sec-intro { color: #94a3b8; }
+#contact .sec-intro { color: var(--muted-dark); }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; max-width: 680px; }
 .contact-item { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.09); border-radius: var(--radius); padding: .95rem 1.25rem; display: flex; justify-content: space-between; align-items: center; }
-.contact-label { font-size: .75rem; color: #475569; font-weight: 500; text-transform: uppercase; letter-spacing: .05em; }
+.contact-label { font-size: .75rem; color: var(--muted-dark); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; }
 .contact-val { font-size: .85rem; color: #cbd5e1; }
 .contact-val a { color: var(--teal-2); text-decoration: none; }
 .contact-val a:hover { text-decoration: underline; }
@@ -310,7 +322,24 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
 /* ── CHIPS ───────────────────────────────────────── */
 .chips { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
-.chip { font-size: .74rem; background: var(--teal-pale); color: var(--teal); padding: .25rem .7rem; border-radius: 20px; font-weight: 500; }
+.chip { font-size: .74rem; background: var(--teal-pale); color: var(--teal-deep); padding: .25rem .7rem; border-radius: 20px; font-weight: 600; }
+
+.text-toggle {
+  margin-top: 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: .52rem 1.15rem;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--teal-deep);
+  cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, color .2s;
+}
+.text-toggle:hover {
+  border-color: var(--teal);
+  box-shadow: 0 4px 16px rgba(8,121,110,.12);
+}
 
 /* ── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 860px) {
@@ -356,6 +385,17 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
     flex-direction: column;
     gap: .25rem;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -419,12 +459,12 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
     <!-- FOUNDER CARDS — top priority -->
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1.75rem;" class="reveal">
       <div style="background:linear-gradient(135deg,var(--teal-pale),#fff);border:1px solid rgba(15,157,138,.25);border-radius:var(--radius-lg);padding:1.3rem 1.5rem;">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;">Institutional Founder · 2016</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.4rem;">Institutional Founder · 2016</div>
         <div style="font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;">Evidence Synthesis Department, PILL</div>
         <div style="font-size:.82rem;color:var(--ink-soft);line-height:1.65;">Built from scratch over a decade — now leading ~100 concurrent systematic review projects with direct national policy impact across Pakistan and internationally.</div>
       </div>
       <div style="background:linear-gradient(135deg,var(--teal-pale),#fff);border:1px solid rgba(15,157,138,.25);border-radius:var(--radius-lg);padding:1.3rem 1.5rem;">
-        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;">Institutional Founder · 10+ Years</div>
+        <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.4rem;">Institutional Founder · 10+ Years</div>
         <div style="font-size:.95rem;font-weight:700;color:var(--ink);margin-bottom:.35rem;">PILL Newsletter — Pakistan's Leading Mental Health Publication</div>
         <div style="font-size:.82rem;color:var(--ink-soft);line-height:1.65;">Established and led for over a decade — 34+ issues in 7 languages (Urdu, English, Sindhi, Punjabi, Pashto, Balochi, Persian) across all four provinces.</div>
       </div>
@@ -615,7 +655,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
     <div style="background:var(--ink-mid);border-radius:var(--radius-lg);padding:1.8rem 2rem;margin-bottom:2rem;" class="reveal">
       <div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.6rem;">Research Framework</div>
       <div style="font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:600;color:#f1f5f9;margin-bottom:.75rem;">A Life Course Approach to Mental Health</div>
-      <p style="font-size:.88rem;color:#94a3b8;line-height:1.75;margin-bottom:1.25rem;">The review programme spans every life stage — from preconception through older age — ensuring evidence informs both age-specific interventions and longitudinal national policy.</p>
+      <p style="font-size:.88rem;color:var(--muted-dark);line-height:1.75;margin-bottom:1.25rem;">The review programme spans every life stage — from preconception through older age — ensuring evidence informs both age-specific interventions and longitudinal national policy.</p>
       <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:.5rem;">
         <div style="background:rgba(15,157,138,.1);border:1px solid rgba(15,157,138,.2);border-radius:var(--radius);padding:.7rem .5rem;text-align:center;">
           <div style="font-size:1.1rem;margin-bottom:.2rem;">🤰</div>
@@ -642,12 +682,12 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
           <div style="font-size:.68rem;font-weight:600;color:var(--teal-2);line-height:1.3;">LMIC &amp; Conflict Settings</div>
         </div>
       </div>
-      <p style="font-size:.78rem;color:#64748b;margin-top:.75rem;">Underpins the 26 Mental Health Summit reviews, the 14 SDG-linked PROSPERO protocols, YCMAP (adolescents), CMAP (adults), maternal mental health, and older adult neurocognitive reviews.</p>
+      <p style="font-size:.78rem;color:var(--muted);margin-top:.75rem;">Underpins the 26 Mental Health Summit reviews, the 14 SDG-linked PROSPERO protocols, YCMAP (adolescents), CMAP (adults), maternal mental health, and older adult neurocognitive reviews.</p>
     </div>
 
     <!-- PILL 10 DIVISIONS -->
     <div style="margin-bottom:2rem;" class="reveal">
-      <div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:.6rem;">Evidence Synthesis Serving All PILL Research Divisions</div>
+      <div style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.6rem;">Evidence Synthesis Serving All PILL Research Divisions</div>
       <p style="font-size:.87rem;color:var(--ink-soft);line-height:1.7;margin-bottom:1rem;">As founder of PILL's Evidence Synthesis department, Usman's review programmes provide the methodological backbone for all ten clinical and research divisions.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.65rem;">
         <div style="background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius);padding:.75rem 1rem;font-size:.82rem;font-weight:500;color:var(--ink-soft);border-left:3px solid var(--teal);">🧠 Neurocognitive Disorders &amp; Older-Adult Mental Health</div>
@@ -677,24 +717,24 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="lmic rct" style="border-left:3px solid var(--teal);">
         <div class="pub-title">Effectiveness and cultural adaptation of parenting interventions for South Asian families: A mixed-methods systematic review using Bernal's Ecological Validity Model</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.4rem;">Co-author (2nd) &nbsp;·&nbsp; Children, 13(1), 86 &nbsp;·&nbsp; DOI: 10.3390/children13010086</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.4rem;">Co-author (2nd) &nbsp;·&nbsp; Children, 13(1), 86 &nbsp;·&nbsp; DOI: 10.3390/children13010086</div>
 
         <!-- Key results grid -->
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:.75rem;">
           <div style="background:var(--teal-pale);border-radius:var(--radius);padding:.6rem .7rem;text-align:center;">
-            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;">17</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal-deep);line-height:1;">17</div>
             <div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">Studies included</div>
           </div>
           <div style="background:var(--teal-pale);border-radius:var(--radius);padding:.6rem .7rem;text-align:center;">
-            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;">8,088</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal-deep);line-height:1;">8,088</div>
             <div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">Participants</div>
           </div>
           <div style="background:var(--teal-pale);border-radius:var(--radius);padding:.6rem .7rem;text-align:center;">
-            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;">−0.77</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal-deep);line-height:1;">−0.77</div>
             <div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">SMD parental depression</div>
           </div>
           <div style="background:var(--teal-pale);border-radius:var(--radius);padding:.6rem .7rem;text-align:center;">
-            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal);line-height:1;">1.48</div>
+            <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--teal-deep);line-height:1;">1.48</div>
             <div style="font-size:.65rem;color:var(--muted);margin-top:.15rem;">Peak SMD child cognition</div>
           </div>
         </div>
@@ -705,32 +745,32 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         <div style="margin:.7rem 0;background:var(--section-alt);border-radius:var(--radius);padding:.8rem 1rem;">
           <div style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;">Key Effect Sizes</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:.3rem .75rem;">
-            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal);">SMD 0.51</strong> — Parenting knowledge</div>
-            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal);">SMD 0.36</strong> — Parental involvement</div>
-            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal);">SMD −0.77</strong> — Parental depression (significant)</div>
-            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal);">SMD 0.84–1.48</strong> — Child cognitive development</div>
-            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal);">SMD 0.79</strong> — Child language development</div>
-            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal);">SMD 0.54</strong> — Child social development</div>
+            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal-deep);">SMD 0.51</strong> — Parenting knowledge</div>
+            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal-deep);">SMD 0.36</strong> — Parental involvement</div>
+            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal-deep);">SMD −0.77</strong> — Parental depression (significant)</div>
+            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal-deep);">SMD 0.84–1.48</strong> — Child cognitive development</div>
+            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal-deep);">SMD 0.79</strong> — Child language development</div>
+            <div style="font-size:.78rem;color:var(--ink-soft);"><strong style="color:var(--teal-deep);">SMD 0.54</strong> — Child social development</div>
           </div>
         </div>
 
         <div class="pub-summary" style="margin-top:.5rem;"><strong>Key finding on cultural adaptation:</strong> studies meeting 7 or more EVM adaptation domains showed stronger and more consistent effects, especially for child cognitive development. Deeper adaptation — local language, culturally familiar examples, traditional games and songs, pictorial materials for low-literacy families, home-based delivery, family involvement — outperforms surface-level translation. Qualitative synthesis found maternal confidence, empowerment, and trust improved when facilitators understood local family structures and norms.</div>
 
         <div class="pub-bottom" style="margin-top:.7rem;"><span class="pub-journal">Children, 13(1), 86</span><span class="pub-year">2026</span></div>
-        <div style="margin-top:.35rem;"><a href="https://doi.org/10.3390/children13010086" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal);text-decoration:none;">DOI: 10.3390/children13010086 ↗</a></div>
+        <div style="margin-top:.35rem;"><a href="https://doi.org/10.3390/children13010086" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal-deep);text-decoration:none;">DOI: 10.3390/children13010086 ↗</a></div>
         <div class="pub-tags"><span class="pub-tag">2nd Author</span><span class="pub-tag">Cultural Adaptation</span><span class="pub-tag">Bernal EVM</span><span class="pub-tag">Parenting</span><span class="pub-tag">South Asia</span><span class="pub-tag">Child Development</span><span class="pub-tag">Maternal Mental Health</span><span class="pub-tag">Mixed Methods</span></div>
       </div>
 
 
       <div class="pub-card" data-tags="suicide lmic rct" style="border-left:3px solid var(--teal);">
         <div class="pub-title">Effectiveness of YCMAP (youth culturally adapted manual-assisted problem solving) in adolescents after self-harm in Pakistan: multicentre, randomised controlled trial</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.4rem;">Co-author &nbsp;·&nbsp; BMJ 2025 &nbsp;·&nbsp; DOI: 10.1136/bmj-2024-083272</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.4rem;">Co-author &nbsp;·&nbsp; BMJ 2025 &nbsp;·&nbsp; DOI: 10.1136/bmj-2024-083272</div>
 
         <!-- Key result callout -->
         <div style="background:linear-gradient(135deg,var(--teal-pale),#fff);border:1px solid rgba(15,157,138,.2);border-radius:var(--radius);padding:.9rem 1.1rem;margin-bottom:.75rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;text-align:center;">
-          <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">684</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;">Adolescents, 5 cities</div></div>
-          <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">0.20</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;">Odds ratio for repeat self-harm</div></div>
-          <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal);line-height:1;">3 vs 15</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;">Repeat events: YCMAP vs control</div></div>
+          <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-deep);line-height:1;">684</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;">Adolescents, 5 cities</div></div>
+          <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-deep);line-height:1;">0.20</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;">Odds ratio for repeat self-harm</div></div>
+          <div><div style="font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--teal-deep);line-height:1;">3 vs 15</div><div style="font-size:.7rem;color:var(--muted);margin-top:.2rem;">Repeat events: YCMAP vs control</div></div>
         </div>
 
         <div class="pub-summary">A landmark two-arm multicentre RCT across Karachi, Hyderabad, Lahore, Multan, and Rawalpindi — the first large-scale trial of an adolescent self-harm intervention in Pakistan. Adolescents aged 12–18 with self-harm in the past three months were randomised to either YCMAP (up to 10 CBT-informed, culturally adapted sessions delivered by trained psychology graduates, available in English and Urdu) plus enhanced usual care, or enhanced usual care alone. <strong>Primary result: 3 repeat self-harm events in the YCMAP group vs 15 in controls at 12 months (OR 0.20)</strong>. YCMAP also produced significant early improvements in distress, hopelessness, and suicidal ideation at 3 months. Strikingly, 88% of recruited adolescents reported self-harm with intent to die, and 79% had not told anyone — illustrating the hidden scale of adolescent suicide risk in Pakistan. Culturally critical features included optional family sessions, Urdu-language materials, and sensitivity to stigma, religious context, and family dynamics. Intervention is scalable through non-specialist therapists under supervision — directly relevant for workforce-limited LMIC health systems.</div>
@@ -738,14 +778,14 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         <div style="margin:.6rem 0;font-size:.8rem;color:var(--ink-soft);"><strong style="color:var(--ink);">Cities:</strong> Karachi · Hyderabad · Lahore · Multan · Rawalpindi &nbsp;|&nbsp; <strong style="color:var(--ink);">Languages:</strong> English &amp; Urdu &nbsp;|&nbsp; <strong style="color:var(--ink);">Follow-up:</strong> 12 months</div>
 
         <div class="pub-bottom"><span class="pub-journal">BMJ, 390, e083272</span><span class="pub-year">2025</span></div>
-        <div style="margin-top:.4rem;"><a href="https://doi.org/10.1136/bmj-2024-083272" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal);text-decoration:none;">DOI: 10.1136/bmj-2024-083272 ↗</a></div>
+        <div style="margin-top:.4rem;"><a href="https://doi.org/10.1136/bmj-2024-083272" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal-deep);text-decoration:none;">DOI: 10.1136/bmj-2024-083272 ↗</a></div>
         <div class="pub-tags"><span class="pub-tag">RCT</span><span class="pub-tag">Self-Harm</span><span class="pub-tag">Adolescents</span><span class="pub-tag">Cultural Adaptation</span><span class="pub-tag">Pakistan</span><span class="pub-tag">Suicide Prevention</span><span class="pub-tag">BMJ</span></div>
       </div>
 
 
       <div class="pub-card" data-tags="suicide lmic policy">
         <div class="pub-title">Prevalence of COVID-19 Pandemic-Related Distress and Suicidal Ideation in Low- and Lower Middle-Income Countries: A Systematic Review and Meta-Analysis</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.4rem;">First Author &nbsp;·&nbsp; PMCID: PMC11737951 &nbsp;·&nbsp; BJPsych Open, 10(S1), S25–S26</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.4rem;">First Author &nbsp;·&nbsp; PMCID: PMC11737951 &nbsp;·&nbsp; BJPsych Open, 10(S1), S25–S26</div>
 
         <div class="pub-summary">Systematic review and meta-analysis investigating COVID-19-related stress, suicidal ideation (SI), and self-harm thoughts specifically in low- and lower-middle-income countries (LLMICs) — a major evidence gap given that most pandemic mental health research was conducted in high-income settings. Searched PsycINFO, Medline, Embase, and PubMed; 1,157 titles screened, 79 full-texts reviewed, 11 studies included.</div>
 
@@ -770,7 +810,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="policy lmic">
         <div class="pub-title">Mental Health Policies in Low and Lower Middle-Income Countries (LLMICs): A Narrative Synthesis</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">First Author &nbsp;·&nbsp; Co-authors: Chaudhry I., Chaudhry N., Jenkin R., Husain N.</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">First Author &nbsp;·&nbsp; Co-authors: Chaudhry I., Chaudhry N., Jenkin R., Husain N.</div>
         <div class="pub-summary">Narrative synthesis of mental health policies across LLMICs — directly informing Pakistan's Mental Health Policy and Implementation Plan developed through the Parliamentary Task Force on SDGs. Examines strengths, gaps, and areas for improvement across national mental health policy frameworks in the world's lowest-resourced settings. One of Usman's core policy translation outputs, linking systematic review evidence to national legislative and strategic frameworks.</div>
         <div class="pub-bottom"><span class="pub-journal">BJPsych Open, 10(S1), S131–S132</span><span class="pub-year">2024</span></div>
         <div class="pub-tags"><span class="pub-tag">First Author</span><span class="pub-tag">Policy</span><span class="pub-tag">LLMIC</span><span class="pub-tag">Narrative Synthesis</span><span class="pub-tag">Pakistan Mental Health Policy</span></div>
@@ -778,10 +818,10 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="lmic">
         <div class="pub-title">A systematic review and meta-analysis of neuroimaging studies examining synaptic density in individuals with psychotic spectrum disorders</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">Co-author (3rd) — PILL &amp; University of Manchester &nbsp;·&nbsp; PROSPERO: CRD42022359018</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">Co-author (3rd) — PILL &amp; University of Manchester &nbsp;·&nbsp; PROSPERO: CRD42022359018</div>
         <div class="pub-summary">The first systematic review and meta-analysis of in vivo neuroimaging studies specifically examining synaptic density across the psychosis spectrum. Searched MEDLINE, Embase, PsycINFO, Web of Science and Cochrane Library from inception to December 2023. Of 3,199 studies identified, 5 met inclusion criteria (n=128 adults; 61 psychotic disorder, 67 healthy controls). Meta-analysis found significantly reduced synaptic density — measured via PET imaging of SV2A glycoprotein — across multiple brain regions including occipital lobe, temporal lobe, parietal lobe, anterior cingulate cortex, frontal cortex, amygdala, thalamus, and hippocampus. Led by CAMH Toronto with PILL and University of Manchester co-authorship.</div>
         <div class="pub-bottom"><span class="pub-journal">BMC Psychiatry, 24(1), 460</span><span class="pub-year">2024</span></div>
-        <div style="margin-top:.5rem;"><a href="https://doi.org/10.1186/s12888-024-05788-y" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal);text-decoration:none;">DOI: 10.1186/s12888-024-05788-y ↗</a></div>
+        <div style="margin-top:.5rem;"><a href="https://doi.org/10.1186/s12888-024-05788-y" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal-deep);text-decoration:none;">DOI: 10.1186/s12888-024-05788-y ↗</a></div>
         <div class="pub-tags"><span class="pub-tag">Psychosis</span><span class="pub-tag">Neuroimaging</span><span class="pub-tag">Meta-Analysis</span><span class="pub-tag">CAMH Toronto</span><span class="pub-tag">Synaptic Density</span></div>
       </div>
 
@@ -790,7 +830,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="lmic policy">
         <div class="pub-title">Psychosocial and pharmacological interventions for personality disorders in low- and middle-income countries: A systematic review</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Hedemann, de Pencier, Rodak, Husain M.I., Arshad U., Naeem F., Chaudhry N., Husain M.O.</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Hedemann, de Pencier, Rodak, Husain M.I., Arshad U., Naeem F., Chaudhry N., Husain M.O.</div>
         <div class="pub-summary">The first systematic review to examine evidence for psychosocial and pharmacological treatments for personality disorders specifically in LMICs — a critically underserved population where most trial evidence comes exclusively from high-income Western settings. Highlights the near-total absence of LMIC-based trials, making a direct evidence-based case for why culturally adapted intervention research in Pakistan and similar settings is not optional but essential. Published in PLOS Global Public Health, a leading open-access global health journal.</div>
         <div class="pub-bottom"><span class="pub-journal">PLOS Global Public Health, 3(11), e0002485</span><span class="pub-year">2023</span></div>
         <div class="pub-tags"><span class="pub-tag">Personality Disorders</span><span class="pub-tag">LMIC</span><span class="pub-tag">Evidence Gap</span><span class="pub-tag">Psychosocial Treatment</span></div>
@@ -798,7 +838,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="suicide lmic">
         <div class="pub-title">Prevalence of suicidal ideation and suicide attempts in individuals with psychosis and bipolar disorder in South Asia: systematic review and meta-analysis</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Khoso A.B., Noureen A., Hodkinson A., Arshad U. et al. &nbsp;·&nbsp; BJPsych Open, 9(6), 2023</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Khoso A.B., Noureen A., Hodkinson A., Arshad U. et al. &nbsp;·&nbsp; BJPsych Open, 9(6), 2023</div>
         <div class="pub-summary">Systematic review and meta-analysis quantifying the prevalence of suicidal ideation and suicide attempts among people with psychosis and bipolar disorder across South Asia — a region-specific evidence base essential for suicide prevention guidelines and clinical practice in Pakistan, India, Bangladesh, and Sri Lanka. Provides the epidemiological foundation for culturally appropriate crisis intervention protocols in settings where severe mental illness intersects with limited specialist services, stigma, and family-centred care systems.</div>
         <div class="pub-bottom"><span class="pub-journal">British Journal of Psychiatry Open, 9(6)</span><span class="pub-year">2023</span></div>
         <div class="pub-tags"><span class="pub-tag">Suicide</span><span class="pub-tag">Psychosis</span><span class="pub-tag">Bipolar</span><span class="pub-tag">South Asia</span><span class="pub-tag">Epidemiology</span></div>
@@ -806,16 +846,16 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="suicide rct">
         <div class="pub-title">A culturally adapted manual-assisted problem-solving intervention (CMAP) for adults with a history of self-harm: a multi-centre randomised controlled trial</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Husain N., Kiran T., Chaudhry I.B., Williams C., Emsley R., Arshad U. et al. &nbsp;·&nbsp; BMC Medicine, 21(1), 282</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Husain N., Kiran T., Chaudhry I.B., Williams C., Emsley R., Arshad U. et al. &nbsp;·&nbsp; BMC Medicine, 21(1), 282</div>
         <div class="pub-summary">The adult predecessor to the YCMAP adolescent trial — a multicentre RCT of CMAP (Culturally Adapted Manual Assisted Problem-Solving) for adults in Pakistan with a history of self-harm. This trial established that culturally adapted brief psychological therapy can be delivered by trained non-specialist therapists under supervision in Pakistan — providing the evidence base and methodological precedent upon which the YCMAP BMJ trial was built. A landmark in the PILL–Manchester self-harm research programme directly connected to Usman's systematic review and evidence synthesis work.</div>
         <div class="pub-bottom"><span class="pub-journal">BMC Medicine, 21(1), 282</span><span class="pub-year">2023</span></div>
-        <div style="margin-top:.35rem;"><a href="https://doi.org/10.1186/s12916-023-02975-6" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal);text-decoration:none;">DOI: 10.1186/s12916-023-02975-6 ↗</a></div>
+        <div style="margin-top:.35rem;"><a href="https://doi.org/10.1186/s12916-023-02975-6" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal-deep);text-decoration:none;">DOI: 10.1186/s12916-023-02975-6 ↗</a></div>
         <div class="pub-tags"><span class="pub-tag">RCT</span><span class="pub-tag">Self-Harm</span><span class="pub-tag">CMAP</span><span class="pub-tag">Pakistan</span><span class="pub-tag">Cultural Adaptation</span><span class="pub-tag">BMC Medicine</span></div>
       </div>
 
       <div class="pub-card" data-tags="lmic">
         <div class="pub-title">The Effects of Rivastigmine on Neuropsychiatric Symptoms in the Early Stages of Parkinson's Disease: A Systematic Review</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Reilly S., Dhaliwal S., Arshad U., Husain N., Macerollo A., Da Costa A.</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">Co-author &nbsp;·&nbsp; Reilly S., Dhaliwal S., Arshad U., Husain N., Macerollo A., Da Costa A.</div>
         <div class="pub-summary">Systematic review examining the evidence for rivastigmine — a cholinesterase inhibitor — in managing neuropsychiatric symptoms (hallucinations, depression, anxiety, apathy) in the early, pre-dementia stages of Parkinson's disease. Contributes to the evidence base for pharmacological management of neuropsychiatric comorbidity in neurodegenerative conditions — extending Usman's review portfolio beyond mental health into neurology and psychopharmacology.</div>
         <div class="pub-bottom"><span class="pub-journal">British Journal of Psychiatry Open, 9(S1), S192–S192</span><span class="pub-year">2023</span></div>
         <div class="pub-tags"><span class="pub-tag">Parkinson's Disease</span><span class="pub-tag">Neuropsychiatry</span><span class="pub-tag">Systematic Review</span><span class="pub-tag">Psychopharmacology</span></div>
@@ -823,23 +863,23 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
 
       <div class="pub-card" data-tags="suicide digital">
         <div class="pub-title">A systematic review of the evidence supporting mobile and internet-based psychological interventions for self-harm</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">✦ First Author (equal contribution) &nbsp;·&nbsp; PROSPERO: CRD42017074065</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">✦ First Author (equal contribution) &nbsp;·&nbsp; PROSPERO: CRD42017074065</div>
         <div class="pub-summary">Systematic review and meta-analysis of 22 eligible trials evaluating mobile phone and internet-delivered psychological interventions for self-injurious thoughts and behaviours (STB) — the first to focus specifically on STB prevention and to include a preregistered protocol. Databases: PsycINFO, Web of Science, MEDLINE. Meta-analysis on suicidal ideation found significant positive treatment effect versus treatment as usual. Critically examines LMIC access barriers where 78% of suicides occur. Funded by MRC (MR/N006062/1) and GCRF/SASHI (MR/P028144/1).</div>
         <div class="pub-bottom">
           <span class="pub-journal">Suicide and Life-Threatening Behavior, 50(1), 151–179</span>
           <span class="pub-year">Feb 2020</span>
           <span class="pub-badge">🏆 Top Downloaded 2018–19</span>
         </div>
-        <div style="margin-top:.5rem;"><a href="https://doi.org/10.1111/sltb.12583" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal);text-decoration:none;">DOI: 10.1111/sltb.12583 ↗</a></div>
+        <div style="margin-top:.5rem;"><a href="https://doi.org/10.1111/sltb.12583" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal-deep);text-decoration:none;">DOI: 10.1111/sltb.12583 ↗</a></div>
         <div class="pub-tags"><span class="pub-tag">First Author</span><span class="pub-tag">Self-Harm</span><span class="pub-tag">Digital Interventions</span><span class="pub-tag">Meta-Analysis</span><span class="pub-tag">LMIC</span><span class="pub-tag">MRC Funded</span></div>
       </div>
 
       <div class="pub-card" data-tags="lmic policy">
         <div class="pub-title">The epidemiology of common mental disorders in Libya: a systematic review</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;">Co-author — Evidence Synthesis Lead &nbsp;·&nbsp; DOI: 10.1186/s41983-021-00408-y</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--teal-deep);margin-bottom:.3rem;">Co-author — Evidence Synthesis Lead &nbsp;·&nbsp; DOI: 10.1186/s41983-021-00408-y</div>
         <div class="pub-summary">The first systematic review to investigate the prevalence of common mental disorders (CMD) in Libya — a MENA nation fragmented by civil conflict since 2011. Searched PubMed, Medline, EMBASE, PsychINFO, CINHAL, and IDRAAC from inception to March 2020. Of 219 studies identified, 15 met inclusion criteria (total n=19,017, age range 5–75). Depression prevalence ranged from 4.3% to 58.6%; anxiety 8.8% to 56%. Usman's role: data search design and replication of results. 10 of 15 studies were conducted in Arabic — a deliberate linguistic choice the paper argues is essential for validity in non-English-speaking populations.</div>
         <div class="pub-bottom"><span class="pub-journal">Egyptian Journal of Neurology, Psychiatry and Neurosurgery, 57(1), 161</span><span class="pub-year">2021</span></div>
-        <div style="margin-top:.5rem;"><a href="https://doi.org/10.1186/s41983-021-00408-y" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal);text-decoration:none;">DOI: 10.1186/s41983-021-00408-y ↗</a></div>
+        <div style="margin-top:.5rem;"><a href="https://doi.org/10.1186/s41983-021-00408-y" target="_blank" rel="noopener noreferrer" style="font-size:.74rem;color:var(--teal-deep);text-decoration:none;">DOI: 10.1186/s41983-021-00408-y ↗</a></div>
         <div class="pub-tags"><span class="pub-tag">Epidemiology</span><span class="pub-tag">MENA</span><span class="pub-tag">Conflict Settings</span><span class="pub-tag">CMD</span><span class="pub-tag">Arabic-Language Research</span></div>
       </div>
 
@@ -848,9 +888,10 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
     </div><!-- end pubList -->
 
     <button id="pubs-toggle-btn"
-      onclick="const el=document.getElementById('pubs-extra');const open=el.style.display==='flex';el.style.display=open?'none':'flex';this.textContent=open?'View all 11 publications ↓':'Show fewer ↑';"
-      style="margin-top:1rem;background:none;border:1px solid var(--rule);border-radius:8px;padding:.5rem 1.2rem;font-size:.82rem;font-weight:500;color:var(--teal);cursor:pointer;transition:all .2s;"
-      onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--rule)'">
+      onclick="const el=document.getElementById('pubs-extra');const open=el.style.display==='flex';el.style.display=open?'none':'flex';this.textContent=open?'View all 11 publications ↓':'Show fewer ↑';this.setAttribute('aria-expanded', String(!open));"
+      class="text-toggle"
+      aria-controls="pubs-extra"
+      aria-expanded="false">
       View all 11 publications ↓
     </button>
 
@@ -912,9 +953,10 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         </tbody>
       </table>
     </div>
-    <button onclick="const t=document.getElementById('grants-full');const open=t.style.display!=='none';t.style.display=open?'none':'block';this.textContent=open?'View all 18 grants ↓':'Show less ↑';"
-      style="margin-top:1rem;background:none;border:1px solid var(--rule);border-radius:8px;padding:.5rem 1.2rem;font-size:.82rem;font-weight:500;color:var(--teal);cursor:pointer;transition:all .2s;"
-      onmouseover="this.style.borderColor='var(--teal)'" onmouseout="this.style.borderColor='var(--rule)'">
+    <button onclick="const t=document.getElementById('grants-full');const open=t.style.display!=='none';t.style.display=open?'none':'block';this.textContent=open?'View all 18 grants ↓':'Show less ↑';this.setAttribute('aria-expanded', String(!open));"
+      class="text-toggle"
+      aria-controls="grants-full"
+      aria-expanded="false">
       View all 18 grants ↓
     </button>
   </div>
@@ -1015,13 +1057,13 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;">
         <div>
           <p style="font-size:.95rem;color:#e2e8f0;line-height:1.8;margin-bottom:1.1rem;">Pakistan has over <strong style="color:var(--teal-2);">220 million people</strong> and fewer than 400 psychiatrists. An estimated 14% of the population — roughly 30 million people — live with a mental health condition. The vast majority receive no care at all. This is the treatment gap.</p>
-          <p style="font-size:.9rem;color:#94a3b8;line-height:1.8;margin-bottom:1.1rem;">But the treatment gap is not just a numbers problem. It is also a knowledge problem, a language problem, and a cultural problem. Most of the world's mental health evidence is generated in high-income, Western, English-speaking contexts — and then exported to settings where it was never tested, in languages communities do not speak, through frameworks that do not reflect local understandings of distress, family, faith, or healing.</p>
-          <p style="font-size:.9rem;color:#94a3b8;line-height:1.8;">An intervention developed in Manchester or New York and delivered unchanged in Lahore or Quetta is not evidence-based practice. It is assumption. Closing the treatment gap requires more than scale — it requires <strong style="color:#e2e8f0;">evidence that actually fits the people it is meant to help.</strong></p>
+          <p style="font-size:.9rem;color:var(--muted-dark);line-height:1.8;margin-bottom:1.1rem;">But the treatment gap is not just a numbers problem. It is also a knowledge problem, a language problem, and a cultural problem. Most of the world's mental health evidence is generated in high-income, Western, English-speaking contexts — and then exported to settings where it was never tested, in languages communities do not speak, through frameworks that do not reflect local understandings of distress, family, faith, or healing.</p>
+          <p style="font-size:.9rem;color:var(--muted-dark);line-height:1.8;">An intervention developed in Manchester or New York and delivered unchanged in Lahore or Quetta is not evidence-based practice. It is assumption. Closing the treatment gap requires more than scale — it requires <strong style="color:#e2e8f0;">evidence that actually fits the people it is meant to help.</strong></p>
         </div>
         <div>
-          <p style="font-size:.9rem;color:#94a3b8;line-height:1.8;margin-bottom:1.1rem;">Pakistan is not linguistically uniform. Punjabi is spoken by around 44% of the population, Pashto by 15%, Sindhi by 14%, Balochi by 4% — yet health information is routinely produced only in Urdu or English, the native languages of a small minority. Communities in Balochistan, Khyber Pakhtunkhwa, interior Sindh, and rural Punjab are systematically excluded from mental health knowledge — not because the knowledge does not exist, but because no one has put it in a form they can access.</p>
-          <p style="font-size:.9rem;color:#94a3b8;line-height:1.8;margin-bottom:1.1rem;">Cultural adaptation is not a softening of rigour — it is a prerequisite for it. Concepts like 'self', 'depression', 'trauma', and 'recovery' carry different meanings across Pakistani linguistic and religious communities. Interventions that ignore this do not just underperform — they can actively cause harm by pathologising normal cultural experience or dismissing protective cultural frameworks.</p>
-          <p style="font-size:.9rem;color:#94a3b8;line-height:1.8;"><strong style="color:#e2e8f0;">This is the problem Usman's work addresses.</strong> Not as a peripheral interest, but as a thread running through his thesis, his systematic reviews, his policy contributions, and the newsletter he built — an institution-level commitment to the principle that evidence must be culturally grounded and linguistically accessible, or it will never reach the people who need it most.</p>
+          <p style="font-size:.9rem;color:var(--muted-dark);line-height:1.8;margin-bottom:1.1rem;">Pakistan is not linguistically uniform. Punjabi is spoken by around 44% of the population, Pashto by 15%, Sindhi by 14%, Balochi by 4% — yet health information is routinely produced only in Urdu or English, the native languages of a small minority. Communities in Balochistan, Khyber Pakhtunkhwa, interior Sindh, and rural Punjab are systematically excluded from mental health knowledge — not because the knowledge does not exist, but because no one has put it in a form they can access.</p>
+          <p style="font-size:.9rem;color:var(--muted-dark);line-height:1.8;margin-bottom:1.1rem;">Cultural adaptation is not a softening of rigour — it is a prerequisite for it. Concepts like 'self', 'depression', 'trauma', and 'recovery' carry different meanings across Pakistani linguistic and religious communities. Interventions that ignore this do not just underperform — they can actively cause harm by pathologising normal cultural experience or dismissing protective cultural frameworks.</p>
+          <p style="font-size:.9rem;color:var(--muted-dark);line-height:1.8;"><strong style="color:#e2e8f0;">This is the problem Usman's work addresses.</strong> Not as a peripheral interest, but as a thread running through his thesis, his systematic reviews, his policy contributions, and the newsletter he built — an institution-level commitment to the principle that evidence must be culturally grounded and linguistically accessible, or it will never reach the people who need it most.</p>
         </div>
       </div>
 
@@ -1029,20 +1071,20 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:var(--radius);overflow:hidden;margin-top:1.75rem;">
         <div style="padding:1.2rem;background:rgba(13,17,23,.5);text-align:center;">
           <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--teal-2);line-height:1;">~30M</div>
-          <div style="font-size:.75rem;color:#64748b;margin-top:.3rem;line-height:1.4;">Pakistanis living with a mental health condition — most untreated</div>
+          <div style="font-size:.75rem;color:var(--muted-dark);margin-top:.3rem;line-height:1.4;">Pakistanis living with a mental health condition — most untreated</div>
         </div>
         <div style="padding:1.2rem;background:rgba(13,17,23,.5);text-align:center;">
           <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--teal-2);line-height:1;">90%</div>
-          <div style="font-size:.75rem;color:#64748b;margin-top:.3rem;line-height:1.4;">Of global mental health research produced in high-income, Western contexts</div>
+          <div style="font-size:.75rem;color:var(--muted-dark);margin-top:.3rem;line-height:1.4;">Of global mental health research produced in high-income, Western contexts</div>
         </div>
         <div style="padding:1.2rem;background:rgba(13,17,23,.5);text-align:center;">
           <div style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--teal-2);line-height:1;">&lt;8%</div>
-          <div style="font-size:.75rem;color:#64748b;margin-top:.3rem;line-height:1.4;">Of Pakistanis speak Urdu as a first language — yet most health material is Urdu-only</div>
+          <div style="font-size:.75rem;color:var(--muted-dark);margin-top:.3rem;line-height:1.4;">Of Pakistanis speak Urdu as a first language — yet most health material is Urdu-only</div>
         </div>
       </div>
     </div>
 
-    <p class="sec-intro" style="color:#94a3b8;">A thread running through every stage of Usman's career: the conviction that psychological knowledge must be made accessible, culturally meaningful, and linguistically inclusive — or it will never reach the people who need it most.</p>
+    <p class="sec-intro" style="color:var(--muted-dark);">A thread running through every stage of Usman's career: the conviction that psychological knowledge must be made accessible, culturally meaningful, and linguistically inclusive — or it will never reach the people who need it most.</p>
 
     <!-- Six pillars -->
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.1rem;margin-bottom:2.5rem;" class="reveal">
@@ -1050,72 +1092,72 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);padding:1.4rem;border-top:3px solid var(--teal-2);">
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.5rem;">Original Scholarship</div>
         <div style="font-size:.92rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem;">Psychology &amp; Pakistani Cultural Identity</div>
-        <div style="font-size:.82rem;color:#94a3b8;line-height:1.7;">MPhil thesis: <em>"Exploring the Concept of Self in Pakistani Culture and Literature — with Reference to Ali Pur ka Aili."</em> Original inquiry into what psychological concepts like 'self' mean within Urdu literary and Pakistani cultural frameworks — a foundational theoretical contribution that underpins all adaptation work that followed.</div>
+        <div style="font-size:.82rem;color:var(--muted-dark);line-height:1.7;">MPhil thesis: <em>"Exploring the Concept of Self in Pakistani Culture and Literature — with Reference to Ali Pur ka Aili."</em> Original inquiry into what psychological concepts like 'self' mean within Urdu literary and Pakistani cultural frameworks — a foundational theoretical contribution that underpins all adaptation work that followed.</div>
       </div>
 
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);padding:1.4rem;border-top:3px solid var(--teal-2);">
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.5rem;">Science of Adaptation</div>
         <div style="font-size:.92rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem;">Evidence Base for Cultural Adaptation</div>
-        <div style="font-size:.82rem;color:#94a3b8;line-height:1.7;">Systematic review of culturally adapted parenting interventions for South Asian families using <strong style="color:#e2e8f0;">Bernal's Ecological Validity Model</strong> (published 2026). Contributes not just to what works, but to how adaptation should be done — building the methodological scaffolding for the field itself.</div>
+        <div style="font-size:.82rem;color:var(--muted-dark);line-height:1.7;">Systematic review of culturally adapted parenting interventions for South Asian families using <strong style="color:#e2e8f0;">Bernal's Ecological Validity Model</strong> (published 2026). Contributes not just to what works, but to how adaptation should be done — building the methodological scaffolding for the field itself.</div>
       </div>
 
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);padding:1.4rem;border-top:3px solid var(--teal-2);">
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.5rem;">Intervention Adaptation</div>
         <div style="font-size:.92rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem;">Adapted Therapies Reaching Communities</div>
-        <div style="font-size:.82rem;color:#94a3b8;line-height:1.7;">Contributed to the adaptation and trial of CMAP, Y-CMAP, Culturally Adapted CBT for IBS, and the RIGHT 7 Integrated ABC Care Pathway for Atrial Fibrillation — spanning self-harm, mental health, and physical health. Both synthesised the evidence <em>for</em> adaptation and contributed to the adaptation <em>work</em> itself.</div>
+        <div style="font-size:.82rem;color:var(--muted-dark);line-height:1.7;">Contributed to the adaptation and trial of CMAP, Y-CMAP, Culturally Adapted CBT for IBS, and the RIGHT 7 Integrated ABC Care Pathway for Atrial Fibrillation — spanning self-harm, mental health, and physical health. Both synthesised the evidence <em>for</em> adaptation and contributed to the adaptation <em>work</em> itself.</div>
       </div>
 
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);padding:1.4rem;border-top:3px solid var(--teal-2);">
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.5rem;">Cross-Cultural Psychiatry</div>
         <div style="font-size:.92rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem;">Global Mental Health &amp; Cultural Psychiatry</div>
-        <div style="font-size:.82rem;color:#94a3b8;line-height:1.7;">Global Lead — Evidence Synthesis for the <strong style="color:#e2e8f0;">GMHCP Research Group</strong> at the University of Manchester. Review programmes on migration and bipolar disorder, South Asian self-harm in high-income countries, ethnopsychopharmacology, and culturally adapted anxiety interventions for ethnic minority adults.</div>
+        <div style="font-size:.82rem;color:var(--muted-dark);line-height:1.7;">Global Lead — Evidence Synthesis for the <strong style="color:#e2e8f0;">GMHCP Research Group</strong> at the University of Manchester. Review programmes on migration and bipolar disorder, South Asian self-harm in high-income countries, ethnopsychopharmacology, and culturally adapted anxiety interventions for ethnic minority adults.</div>
       </div>
 
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);padding:1.4rem;border-top:3px solid var(--teal-2);">
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.5rem;">Linguistic Equity</div>
         <div style="font-size:.92rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem;">Seven Languages, One Mission</div>
-        <div style="font-size:.82rem;color:#94a3b8;line-height:1.7;">Founded and led the PILL Newsletter for over a decade — deliberately publishing in <strong style="color:#e2e8f0;">Urdu, English, Sindhi, Punjabi, Pashto, Balochi, and Persian</strong> to reach communities across all four provinces. Each language choice is an act of health equity: psychological knowledge should not be gatekept by literacy in a single tongue.</div>
+        <div style="font-size:.82rem;color:var(--muted-dark);line-height:1.7;">Founded and led the PILL Newsletter for over a decade — deliberately publishing in <strong style="color:#e2e8f0;">Urdu, English, Sindhi, Punjabi, Pashto, Balochi, and Persian</strong> to reach communities across all four provinces. Each language choice is an act of health equity: psychological knowledge should not be gatekept by literacy in a single tongue.</div>
       </div>
 
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius-lg);padding:1.4rem;border-top:3px solid var(--teal-2);">
         <div style="font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.5rem;">Invisible Labour</div>
         <div style="font-size:.92rem;font-weight:600;color:#e2e8f0;margin-bottom:.5rem;">Translation &amp; Adaptation of Materials</div>
-        <div style="font-size:.82rem;color:#94a3b8;line-height:1.7;">Systematic translation and cultural adaptation of trial manuals, training resources, and intervention materials — critical to the delivery of multinational studies in Pakistan but rarely credited in academic profiles. This labour ensures that evidence generated elsewhere actually works for Pakistani patients, families, and communities.</div>
+        <div style="font-size:.82rem;color:var(--muted-dark);line-height:1.7;">Systematic translation and cultural adaptation of trial manuals, training resources, and intervention materials — critical to the delivery of multinational studies in Pakistan but rarely credited in academic profiles. This labour ensures that evidence generated elsewhere actually works for Pakistani patients, families, and communities.</div>
       </div>
 
     </div>
 
     <!-- Cross-cultural reviews -->
-    <div style="font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#64748b;margin-bottom:1rem;">Cross-Cultural &amp; Migration Review Portfolio</div>
+    <div style="font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-dark);margin-bottom:1rem;">Cross-Cultural &amp; Migration Review Portfolio</div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem;" class="reveal">
       <div style="background:rgba(15,157,138,.07);border:1px solid rgba(15,157,138,.25);border-radius:var(--radius);padding:1rem 1.2rem;grid-column:1/-1;">
         <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-2);margin-bottom:.3rem;">Featured — Cultural Adaptation in Practice</div>
         <div style="font-size:.9rem;font-weight:600;color:#e2e8f0;margin-bottom:.3rem;">YCMAP Multicentre RCT — BMJ, 2025</div>
-        <div style="font-size:.8rem;color:#94a3b8;line-height:1.7;">684 adolescents across 5 Pakistani cities. Up to 10 CBT-informed sessions adapted for Pakistani family structures, religious beliefs, and stigma context — delivered in English and Urdu by psychology graduates under supervision. Result: OR 0.20 for repeat self-harm. The optional family session and Urdu materials are direct outputs of cultural adaptation theory applied to trial design. <a href="https://doi.org/10.1136/bmj-2024-083272" target="_blank" rel="noopener noreferrer" style="color:var(--teal-2);">DOI: 10.1136/bmj-2024-083272 ↗</a></div>
+        <div style="font-size:.8rem;color:var(--muted-dark);line-height:1.7;">684 adolescents across 5 Pakistani cities. Up to 10 CBT-informed sessions adapted for Pakistani family structures, religious beliefs, and stigma context — delivered in English and Urdu by psychology graduates under supervision. Result: OR 0.20 for repeat self-harm. The optional family session and Urdu materials are direct outputs of cultural adaptation theory applied to trial design. <a href="https://doi.org/10.1136/bmj-2024-083272" target="_blank" rel="noopener noreferrer" style="color:var(--teal-2);">DOI: 10.1136/bmj-2024-083272 ↗</a></div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:1rem 1.2rem;">
         <div style="font-size:.85rem;font-weight:500;color:#e2e8f0;margin-bottom:.25rem;line-height:1.5;">Bipolar disorder and migration — systematic review &amp; meta-analysis</div>
-        <div style="font-size:.75rem;color:#64748b;">Culture, migration, and severe mental illness</div>
+        <div style="font-size:.75rem;color:var(--muted-dark);">Culture, migration, and severe mental illness</div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:1rem 1.2rem;">
         <div style="font-size:.85rem;font-weight:500;color:#e2e8f0;margin-bottom:.25rem;line-height:1.5;">Suicidal ideation &amp; self-harm among South Asian young people in high-income countries</div>
-        <div style="font-size:.75rem;color:#64748b;">Diaspora mental health across cultural contexts</div>
+        <div style="font-size:.75rem;color:var(--muted-dark);">Diaspora mental health across cultural contexts</div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:1rem 1.2rem;">
         <div style="font-size:.85rem;font-weight:500;color:#e2e8f0;margin-bottom:.25rem;line-height:1.5;">Cultural adaptations of psychological interventions for anxiety disorders for ethnic minority adults in high-income countries</div>
-        <div style="font-size:.75rem;color:#64748b;">Presented at BPPA Leicester 2024</div>
+        <div style="font-size:.75rem;color:var(--muted-dark);">Presented at BPPA Leicester 2024</div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:1rem 1.2rem;">
         <div style="font-size:.85rem;font-weight:500;color:#e2e8f0;margin-bottom:.25rem;line-height:1.5;">Ethnopsychopharmacological aspects in treating people of South Asian heritage for psychosis</div>
-        <div style="font-size:.75rem;color:#64748b;">Culture and pharmacological response — PROSPERO CRD42022314182</div>
+        <div style="font-size:.75rem;color:var(--muted-dark);">Culture and pharmacological response — PROSPERO CRD42022314182</div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:1rem 1.2rem;">
         <div style="font-size:.85rem;font-weight:500;color:#e2e8f0;margin-bottom:.25rem;line-height:1.5;">Risk &amp; protective factors of anxiety and depression among South Asian young people in high-income countries</div>
-        <div style="font-size:.75rem;color:#64748b;">PROSPERO CRD42022308662</div>
+        <div style="font-size:.75rem;color:var(--muted-dark);">PROSPERO CRD42022308662</div>
       </div>
       <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:var(--radius);padding:1rem 1.2rem;">
         <div style="font-size:.85rem;font-weight:500;color:#e2e8f0;margin-bottom:.25rem;line-height:1.5;">Effectiveness of perinatal mental health interventions for women from African, Caribbean, Bangladeshi &amp; Pakistani populations</div>
-        <div style="font-size:.75rem;color:#64748b;">PROSPERO CRD42024388834 — multicultural maternal mental health</div>
+        <div style="font-size:.75rem;color:var(--muted-dark);">PROSPERO CRD42024388834 — multicultural maternal mental health</div>
       </div>
     </div>
   </div>
@@ -1215,7 +1257,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
       <span class="nl-lang">فارسی Persian</span>
     </div>
 
-    <div class="sec-label" style="margin-bottom:.75rem;">Selected Issues — <a href="https://www.pill.org.pk/newsletters/" target="_blank" rel="noopener noreferrer" style="color:var(--teal);font-size:.78rem;font-weight:500;text-decoration:none;">View all on PILL.org.pk ↗</a></div>
+    <div class="sec-label" style="margin-bottom:.75rem;">Selected Issues — <a href="https://www.pill.org.pk/newsletters/" target="_blank" rel="noopener noreferrer" style="color:var(--teal-deep);font-size:.78rem;font-weight:500;text-decoration:none;">View all on PILL.org.pk ↗</a></div>
     <div class="nl-grid reveal">
 
       <div class="nl-card nl-featured">
@@ -1266,6 +1308,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         </a>
       </div>
 
+      <div id="nl-extra" class="nl-extra">
       <div class="nl-card">
         <a href="https://www.pill.org.pk/newsletters/youth-mental-health-english/" target="_blank" rel="noopener noreferrer">
           <div class="nl-issue">Issue 15</div>
@@ -1313,12 +1356,20 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
           <div class="nl-langs">English · Urdu</div>
         </a>
       </div>
+      </div>
 
     </div>
 
+    <button id="nl-toggle-btn"
+      class="text-toggle"
+      aria-controls="nl-extra"
+      aria-expanded="false">
+      View more selected issues ↓
+    </button>
+
     <p style="font-size:.8rem;color:var(--muted);margin-top:1.25rem;">
       All 34+ newsletter issues available at 
-      <a href="https://www.pill.org.pk/newsletters/" target="_blank" rel="noopener noreferrer" style="color:var(--teal);">pill.org.pk/newsletters ↗</a>
+      <a href="https://www.pill.org.pk/newsletters/" target="_blank" rel="noopener noreferrer" style="color:var(--teal-deep);">pill.org.pk/newsletters ↗</a>
     </p>
   </div>
 </section>
@@ -1342,7 +1393,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         <div style="background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:1.4rem;display:flex;gap:1.2rem;align-items:flex-start;">
           <div style="font-size:2rem;line-height:1;">🧠</div>
           <div>
-            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;">Certificate of Attendance</div>
+            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.3rem;">Certificate of Attendance</div>
             <div style="font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;">The Essentials of Neuropsychiatry</div>
             <div style="font-size:.82rem;color:var(--ink-soft);line-height:1.6;">British Neuropsychiatry Association (BNPA) December Teaching Weekend<br>8–10 December 2023 · Signed by Prof. Adam Zeman, Teaching Course Director<br><span style="font-size:.78rem;color:var(--muted);">Connects to co-authored Parkinson's neuropsychiatry and synaptic density reviews</span></div>
           </div>
@@ -1351,7 +1402,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         <div style="background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:1.4rem;display:flex;gap:1.2rem;align-items:flex-start;">
           <div style="font-size:2rem;line-height:1;">📜</div>
           <div>
-            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;">Certification — University of Oxford</div>
+            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.3rem;">Certification — University of Oxford</div>
             <div style="font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;">Systematic Reviews</div>
             <div style="font-size:.82rem;color:var(--ink-soft);line-height:1.6;">Department for Continuing Education, University of Oxford · 26 February – 1 March 2024<br>Signed by the Director · University of Oxford seal<br><span style="font-size:.78rem;color:var(--muted);">In-person intensive course at Oxford — the world's leading centre for systematic review methodology</span></div>
           </div>
@@ -1360,7 +1411,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         <div style="background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:1.4rem;display:flex;gap:1.2rem;align-items:flex-start;">
           <div style="font-size:2rem;line-height:1;">🌐</div>
           <div>
-            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;">Certification — Cochrane</div>
+            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.3rem;">Certification — Cochrane</div>
             <div style="font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;">Cochrane Interactive Learning: Conducting an Intervention Review</div>
             <div style="font-size:.82rem;color:var(--ink-soft);line-height:1.6;">All modules completed · Up to 20 hours of structured learning · August 2025<br>Signed by Karla Soares-Weiser, Acting CEO, Cochrane<br><span style="font-size:.78rem;color:var(--muted);">Gold-standard training from the global authority on systematic reviews and evidence synthesis</span></div>
           </div>
@@ -1369,7 +1420,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
         <div style="background:var(--card-bg);border:1px solid var(--rule);border-radius:var(--radius-lg);padding:1.4rem;display:flex;gap:1.2rem;align-items:flex-start;grid-column:1/-1;">
           <div style="font-size:2rem;line-height:1;">🔬</div>
           <div>
-            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:.3rem;">Clinical Assessment Training</div>
+            <div style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:.3rem;">Clinical Assessment Training</div>
             <div style="font-size:.92rem;font-weight:600;color:var(--ink);margin-bottom:.25rem;">CAARMS — Comprehensive Assessment of At-Risk Mental States</div>
             <div style="font-size:.82rem;color:var(--ink-soft);line-height:1.6;">Trained assessor for the internationally validated instrument used to identify individuals at clinical high risk for psychosis — directly relevant to early intervention research, the At-Risk Mental State division at PILL, and the synaptic density in psychosis review portfolio.</div>
           </div>
@@ -1444,6 +1495,17 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
+// Newsletter density toggle
+const nlToggle = document.getElementById('nl-toggle-btn');
+const nlExtra = document.getElementById('nl-extra');
+if (nlToggle && nlExtra) {
+  nlToggle.addEventListener('click', () => {
+    const isOpen = nlExtra.classList.toggle('open');
+    nlToggle.textContent = isOpen ? 'Show fewer selected issues ↑' : 'View more selected issues ↓';
+    nlToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+}
+
 // Mobile nav
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
@@ -1457,6 +1519,22 @@ navLinks.querySelectorAll('a').forEach(link => {
     navToggle.setAttribute('aria-expanded', 'false');
   });
 });
+
+// Active section state for long-page navigation
+const navBySection = new Map(
+  [...document.querySelectorAll('.nav-links a[href^="#"]')].map(link => [link.getAttribute('href').slice(1), link])
+);
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const link = navBySection.get(entry.target.id);
+    if (!link) return;
+    if (entry.isIntersecting) {
+      document.querySelectorAll('.nav-links a').forEach(item => item.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+document.querySelectorAll('section[id]').forEach(section => sectionObserver.observe(section));
 </script>
 </body>
 </html>
