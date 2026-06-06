@@ -360,6 +360,7 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
   .proto-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
+  nav { padding: 0 1.25rem; }
   .nav-links { display: none; }
   .nav-links.open {
     display: flex;
@@ -375,8 +376,69 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
     z-index: 199;
   }
   .nav-toggle { display: block; }
+  #hero {
+    display: block;
+    min-height: auto;
+    padding: 6.75rem 1.25rem 3rem;
+  }
+  .hero-left,
+  .hero-right {
+    max-width: 350px;
+    min-width: 0;
+    width: 100%;
+  }
+  .hero-eyebrow {
+    display: block;
+    font-size: .66rem;
+    letter-spacing: .1em;
+    line-height: 1.55;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+  .hero-eyebrow::before {
+    display: inline-block;
+    margin: 0 .55rem .12rem 0;
+    vertical-align: middle;
+    width: 24px;
+  }
+  h1.hero-title {
+    font-size: clamp(2.55rem, 12.5vw, 3.35rem);
+    line-height: 1.06;
+    margin-bottom: 1.25rem;
+  }
+  .hero-sub {
+    font-size: .95rem;
+    line-height: 1.72;
+    max-width: 100%;
+    overflow-wrap: break-word;
+  }
+  .hero-btns {
+    display: grid;
+    gap: .7rem;
+    grid-template-columns: 1fr;
+  }
+  .btn {
+    justify-content: center;
+    min-height: 44px;
+    width: 100%;
+  }
   .hero-right { flex-direction: column; }
-  .stat-card { flex: 1 1 100%; }
+  .stat-card {
+    align-items: flex-start;
+    flex: 1 1 100%;
+    gap: .9rem;
+    padding: 1rem 1.1rem;
+    width: 100%;
+  }
+  .stat-card > div:last-child { min-width: 0; }
+  .stat-num {
+    font-size: 2rem;
+    min-width: 68px;
+  }
+  .stat-info-label,
+  .stat-info-sub {
+    overflow-wrap: anywhere;
+  }
   .engage-grid { grid-template-columns: 1fr; }
   .impact-steps { grid-template-columns: 1fr; }
   .award-row { grid-template-columns: 1fr; }
@@ -1451,7 +1513,6 @@ footer { background: #080c10; padding: 1.75rem 2rem; text-align: center; font-si
       <div class="profile-row"><span class="profile-name">ORCID</span><a class="profile-link" href="https://orcid.org/0000-0002-2096-8014" target="_blank" rel="noopener noreferrer">orcid.org/0000-0002-2096-8014 ↗</a></div>
       <div class="profile-row"><span class="profile-name">Facebook</span><a class="profile-link" href="https://www.facebook.com/share/1BdxRKPWyW/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">View Facebook Profile ↗</a></div>
       <div class="profile-row"><span class="profile-name">PILL Organisation</span><a class="profile-link" href="https://www.pill.org.pk" target="_blank" rel="noopener noreferrer">pill.org.pk ↗</a></div>
-      <div class="profile-row"><span class="profile-name">Google Scholar</span><span style="font-size:.82rem;color:var(--muted)">Add your Google Scholar URL</span></div>
     </div>
   </div>
 </section>
